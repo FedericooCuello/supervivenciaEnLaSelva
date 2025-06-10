@@ -47,7 +47,7 @@ public class Arbol {
         System.out.println("Fin del juego : " + puntero.getResultadoFinal());
         }
     public static Nodo construirArbol(){
-        Nodo raiz = new Nodo("Supervicencia en la selva");
+        Nodo raiz = new Nodo("Supervivencia en la selva");
         Nodo conseguirRecursos = new Nodo(" (1) Buscar Recursos");
         Nodo conseguirRefugio = new Nodo(" (2) Buscar un Refugio");
         raiz.setCaminoIzquierdo(conseguirRecursos);
@@ -139,5 +139,50 @@ public class Arbol {
         crearTrampa.setCaminoDerecho(crearJaula);
         return raiz;
     }
+    public static  Nodo construirArbolPersonalizado(Scanner leer) {
+    System.out.print("Ingresa el texto de inicio de la historia: ");
+    leer.nextLine(); 
+    String texto = leer.nextLine();
+    Nodo raiz = new Nodo(texto);
+    construirSubarbol(leer, raiz,1);
+    return raiz;
+}
+
+public static void construirSubarbol(Scanner leer, Nodo nodoActual,int nivelActual) {
+    System.out.println("Estás en el nivel " + nivelActual + " del árbol.");
+    System.out.println("¿Este nodo es un final? (s/n)");
+    String respuesta = leer.nextLine();
+    
+    
+    if (respuesta.equalsIgnoreCase("s")) {
+        System.out.print("Ingresa el resultado final de esta historia: ");
+        nodoActual.setResultadoFinal(leer.nextLine());
+        return;
     }
+    
+
+    System.out.print("Texto para la opción izquierda (opción 1): ");
+    String izq = leer.nextLine();
+    Nodo izquierdo = new Nodo(izq);
+    nodoActual.setCaminoIzquierdo(izquierdo);
+    construirSubarbol(leer, izquierdo,nivelActual + 1);
+    
+    System.out.print("Texto para la opción derecha (opción 2): ");
+    String der = leer.nextLine();
+    Nodo derecho = new Nodo(der);
+    nodoActual.setCaminoDerecho(derecho);
+    construirSubarbol(leer, derecho,nivelActual + 1);
+    
+
+}
+public static int calcularProfundidad(Nodo nodo) {
+    if (nodo == null) {
+        return 0;
+    }
+    int izquierda = calcularProfundidad(nodo.getCaminoIzquierdo());
+    int derecha = calcularProfundidad(nodo.getCaminoDerecho());
+    return 1 + Math.max(izquierda, derecha);
+}
+
+   }
 

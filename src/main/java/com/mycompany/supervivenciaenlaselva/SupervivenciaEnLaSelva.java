@@ -15,11 +15,12 @@ public class SupervivenciaEnLaSelva {
         Scanner leer = new Scanner(System.in);
         Arbol arbol = new Arbol(construirArbol());
         int op = 0;
-        while (op!=3) {
+        while (op!=4) {
             System.out.println("Menu");
             System.out.println("1. Jugar");
             System.out.println("2. Ver camino del último juego");
-            System.out.println("3. Salir");
+            System.out.println("3. Crear juego personalizado");
+            System.out.println("4. Salir");
             System.out.print("Seleccione una opción: ");
             op = leer.nextInt();
 
@@ -39,11 +40,25 @@ public class SupervivenciaEnLaSelva {
                     }
                     break;
                 case 3:
-                    System.out.println("¡Saliste del juego!");
-                   System.exit(0);
-               
+                       camino.clear();
+                       System.out.println("¡Vamos a crear tu propia historia!");
+                       Nodo nuevaRaiz = Arbol.construirArbolPersonalizado(leer);
+                       int profundidad = Arbol.calcularProfundidad(nuevaRaiz);
+                       if (profundidad < 4) {
+                          System.out.println("️ El árbol debe tener al menos 4 niveles de profundidad. Volvé a intentarlo.");
+                         } else {
+                                arbol.setRaiz(nuevaRaiz);
+                                System.out.println(" Historia personalizada creada con éxito. ¡Ahora a jugar!");
+                       }                      
+                       break;
+  
+                   case 4:                                  
+                    System.out.println("¡Saliste del juego!");                
+                    System.exit(0);
+                    break;
+                             
                 
-               default:
+               default:               
                  
                     System.out.println(" Opción inválida.");
             }
