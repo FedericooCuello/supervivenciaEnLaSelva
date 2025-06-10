@@ -40,11 +40,12 @@ public class SupervivenciaEnLaSelva {
                     break;
                 case 3:
                     System.out.println("¡Saliste del juego!");
+                   System.exit(0);
                
                 
-               //default:
+               default:
                  
-                    //System.out.println(" Opción inválida.");
+                    System.out.println(" Opción inválida.");
             }
         }
     }}
