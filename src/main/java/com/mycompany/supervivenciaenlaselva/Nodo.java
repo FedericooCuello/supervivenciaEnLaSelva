@@ -11,7 +11,7 @@ public class Nodo {
         this.opcion = respuesta;
         this.caminoDerecho = null;
         this.caminoIzquierdo = null;
-        this.resultadoFinal = null;
+        this.resultadoFinal = null; 
 
     }
 

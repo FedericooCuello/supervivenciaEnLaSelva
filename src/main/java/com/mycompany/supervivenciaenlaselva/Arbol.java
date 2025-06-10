@@ -23,6 +23,7 @@ public class Arbol {
     public void jugar(List<String> camino){
         Scanner leer = new Scanner(System.in);
         Nodo puntero = raiz;
+        camino.add(raiz.getOpcion());
         while(!puntero.esHoja()){
             System.out.println(puntero.getOpcion());
             if(puntero.getCaminoIzquierdo() != null){
