@@ -55,21 +55,21 @@ public class SupervivenciaEnLaSelva {
                     }
                     break;
                 case 4:
-                    if (arbolPersonalizado == null) {
-                        System.out.println("Primero debes crear el árbol personalizado.");
-                    } else {
-                        camino.clear();
-                        recorridoPersonalizado = arbolPersonalizado.jugarConArbolPersonalizado(camino);
-                    }
-                    break;
+                       if (arbolPersonalizado == null) {
+                           System.out.println("Primero debes crear el árbol personalizado.");
+                         } else {
+                     camino.clear();
+                  arbolPersonalizado.jugarConArbolPersonalizado(camino);
+                      }
+                       break;
                 case 5:
-                    if (recorridoPersonalizado == null) {
-                        System.out.println("Aún no jugaste el árbol personalizado.");
-                    } else {
-                        System.out.println("Árbol del recorrido personalizado:");
-                        Arbol.mostrarRecorrido(recorridoPersonalizado, 0);
+                    if (arbolPersonalizado == null) {
+                   System.out.println("Aún no jugaste el árbol personalizado.");
+                 } else {
+                System.out.println("Árbol completo personalizado:");
+                  Arbol.mostrarRecorrido(arbolPersonalizado.getRaiz(), 0);
                     }
-                    break;
+                       break;
                 case 6:
                     System.out.println("¡Saliste del juego!");
                     break;
